@@ -477,33 +477,33 @@ if predict:
         st.success("### 🎉 Recommendation")
 
         st.write("""
-✔ Customer is satisfied
+        ✔ Customer is satisfied
 
-✔ Maintain current service quality
+        ✔ Maintain current service quality
 
-✔ Continue loyalty benefits
+        ✔ Continue loyalty benefits
 
-✔ Offer premium plans
+        ✔ Offer premium plans
 
-✔ Keep regular communication
-""")
-report = pd.DataFrame({
-    "Prediction": [
-        "Stay" if prediction[0] == 0 else "Churn"
-    ]
-})
+        ✔ Keep regular communication
+         """)
+       report = pd.DataFrame({
+             "Prediction": [
+                "Stay" if prediction[0] == 0 else "Churn"
+              ]
+         })
 
-    st.download_button(
+       st.download_button(
 
-        "📥 Download Prediction Report",
+          "📥 Download Prediction Report",
 
-        report.to_csv(index=False),
+          report.to_csv(index=False),
 
-        "prediction_report.csv",
+         "prediction_report.csv",
 
-        "text/csv"
+         "text/csv"
 
-    )
+        )
 
 # ---------------- FOOTER ----------------
 
