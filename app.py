@@ -487,23 +487,16 @@ if predict:
 
         ✔ Keep regular communication
          """)
-       report = pd.DataFrame({
-             "Prediction": [
-                "Stay" if prediction[0] == 0 else "Churn"
-              ]
-         })
-
-       st.download_button(
-
-          "📥 Download Prediction Report",
-
-          report.to_csv(index=False),
-
-         "prediction_report.csv",
-
-         "text/csv"
-
-        )
+report = pd.DataFrame({
+     "Prediction": [
+     "Stay" if prediction[0] == 0 else "Churn"]
+})
+st.download_button(
+  "📥 Download Prediction Report",
+  report.to_csv(index=False),
+  "prediction_report.csv",
+  "text/csv"
+)
 
 # ---------------- FOOTER ----------------
 
