@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import pickle
-import plotly.express as px
+
 
 # ---------------- PAGE CONFIG ----------------
 
@@ -439,12 +439,8 @@ if predict:
     })
 
     with st.spinner("🔄 Predicting Customer Churn..."):
-
-        prediction = model.predict(input_data)
-        probability = model.predict_proba(input_data)
-
-    stay = probability[0][0]
-    churn = probability[0][1]
+     prediction = model.predict(input_data)
+       
 
     st.markdown("---")
 
@@ -458,36 +454,7 @@ if predict:
 
         st.success("✅ Customer is likely to Stay")
 
-        st.balloons()
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-
-        st.metric(
-            "✅ Stay Probability",
-            f"{stay*100:.2f}%"
-        )
-
-    with col2:
-
-        st.metric(
-            "⚠️ Churn Probability",
-            f"{churn*100:.2f}%"
-        )
-
-    st.markdown("### Prediction Confidence")
-
-    st.progress(float(max(stay, churn)))
-
-    fig = px.pie(
-        values=[stay, churn],
-        names=["Stay", "Churn"],
-        hole=0.55,
-        title="Customer Churn Probability"
-    )
-
-    st.plotly_chart(fig, use_container_width=True)
+        st.balloons
 
     if prediction[0] == 1:
 
@@ -520,22 +487,11 @@ if predict:
 
 ✔ Keep regular communication
 """)
-
-    report = pd.DataFrame({
-
-        "Prediction":[
-            "Stay" if prediction[0]==0 else "Churn"
-        ],
-
-        "Stay Probability (%)":[
-            round(stay*100,2)
-        ],
-
-        "Churn Probability (%)":[
-            round(churn*100,2)
-        ]
-
-    })
+report = pd.DataFrame({
+    "Prediction": [
+        "Stay" if prediction[0] == 0 else "Churn"
+    ]
+})
 
     st.download_button(
 
