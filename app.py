@@ -439,7 +439,7 @@ if predict:
     })
 
     with st.spinner("🔄 Predicting Customer Churn..."):
-     prediction = model.predict(input_data)
+         prediction = model.predict(input_data)
        
 
     st.markdown("---")
@@ -450,55 +450,42 @@ if predict:
 
         st.error("⚠️ Customer is likely to Churn")
 
+        st.warning("### 💡 Recommendation")
+        st.write("""
+✔ Offer attractive discounts
+✔ Contact customer personally
+✔ Improve customer support
+✔ Provide better subscription plans
+✔ Give loyalty rewards
+""")
+
     else:
 
         st.success("✅ Customer is likely to Stay")
-
         st.balloons()
 
-    if prediction[0] == 1:
-
-        st.warning("### 💡 Recommendation")
-
-        st.write("""
-           ✔ Offer attractive discounts
-
-           ✔ Contact customer personally
-
-          ✔ Improve customer support
-
-          ✔ Provide better subscription plans
-
-          ✔ Give loyalty rewards
-         """)
-
-    else:
-
         st.success("### 🎉 Recommendation")
-
         st.write("""
-        ✔ Customer is satisfied
+✔ Customer is satisfied
+✔ Maintain current service quality
+✔ Continue loyalty benefits
+✔ Offer premium plans
+✔ Keep regular communication
+""")
 
-        ✔ Maintain current service quality
 
-        ✔ Continue loyalty benefits
+    report = pd.DataFrame({
+        "Prediction": [
+            "Stay" if prediction[0] == 0 else "Churn"
+        ]
+    })
 
-        ✔ Offer premium plans
-
-        ✔ Keep regular communication
-         """)
-        report = pd.DataFrame({
-            "Prediction": [
-                "Stay" if prediction[0] == 0 else "Churn"
-          ]
-        })
-
-      st.download_button(
-           "📥 Download Prediction Report",
-            report.to_csv(index=False),
-           "prediction_report.csv",
-           "text/csv" )
-
+    st.download_button(
+        "📥 Download Prediction Report",
+        report.to_csv(index=False),
+        "prediction_report.csv",
+        "text/csv"
+    )
 # ---------------- FOOTER ----------------
 
 st.markdown("---")
