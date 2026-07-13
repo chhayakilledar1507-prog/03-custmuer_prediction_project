@@ -461,16 +461,16 @@ if predict:
         st.warning("### 💡 Recommendation")
 
         st.write("""
-✔ Offer attractive discounts
+           ✔ Offer attractive discounts
 
-✔ Contact customer personally
+           ✔ Contact customer personally
 
-✔ Improve customer support
+          ✔ Improve customer support
 
-✔ Provide better subscription plans
+          ✔ Provide better subscription plans
 
-✔ Give loyalty rewards
-""")
+          ✔ Give loyalty rewards
+         """)
 
     else:
 
@@ -497,8 +497,7 @@ if predict:
            "📥 Download Prediction Report",
             report.to_csv(index=False),
            "prediction_report.csv",
-           "text/csv"
-          )
+           "text/csv" )
 
 # ---------------- FOOTER ----------------
 
