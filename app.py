@@ -454,7 +454,7 @@ if predict:
 
         st.success("✅ Customer is likely to Stay")
 
-        st.balloons
+        st.balloons()
 
     if prediction[0] == 1:
 
@@ -487,16 +487,18 @@ if predict:
 
         ✔ Keep regular communication
          """)
-report = pd.DataFrame({
-     "Prediction": [
-     "Stay" if prediction[0] == 0 else "Churn"]
-})
-st.download_button(
-  "📥 Download Prediction Report",
-  report.to_csv(index=False),
-  "prediction_report.csv",
-  "text/csv"
-)
+        report = pd.DataFrame({
+            "Prediction": [
+                "Stay" if prediction[0] == 0 else "Churn"
+          ]
+        })
+
+      st.download_button(
+           "📥 Download Prediction Report",
+            report.to_csv(index=False),
+           "prediction_report.csv",
+           "text/csv"
+          )
 
 # ---------------- FOOTER ----------------
 
